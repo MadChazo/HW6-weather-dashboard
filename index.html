@@ -8,14 +8,47 @@
   </head>
   <body>
     <header><h1>Weather Dashboard</h1></header>
-    <aside>
+    <aside id="search">
       <h2>Search for a City:</h2>
       <input type="text" id="city-search" name="city-search" value="" />
       <input type="submit" id="search-button" value="Search" />
+      <button id="clear">Clear History</button>
       <ul id="history"></ul>
     </aside>
     <main>
-      <h2></h2>
+      <div id="todays-weather">
+        <h2 id="today-city"></h2>
+        <img id="today-icon" />
+        <ul id="today-stats"></ul>
+      </div>
+      <h3>5-Day Forecast:</h3>
+      <div id="5d-forecast">
+        <div class="5-day">
+          <h4 class="5d-date"></h4>
+          <img class="5d-icon" />
+          <ul class="5d-stats"></ul>
+        </div>
+        <div class="5-day">
+          <h4 class="5d-date"></h4>
+          <img class="5d-icon" />
+          <ul class="5d-stats"></ul>
+        </div>
+        <div class="5-day">
+          <h4 class="5d-date"></h4>
+          <img class="5d-icon" />
+          <ul class="5d-stats"></ul>
+        </div>
+        <div class="5-day">
+          <h4 class="5d-date"></h4>
+          <img class="5d-icon" />
+          <ul class="5d-stats"></ul>
+        </div>
+        <div class="5-day">
+          <h4 class="5d-date"></h4>
+          <img class="5d-icon" />
+          <ul class="5d-stats"></ul>
+        </div>
+      </div>
     </main>
 
     <script src="assets/js/script.js"></script>
