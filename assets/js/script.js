@@ -5,7 +5,8 @@ var historyList = document.getElementById("history");
 var todayCity = document.getElementById("today-city");
 var todayIcon = document.getElementById("today-icon");
 var todayStats = document.getElementById("today-stats");
-var fiveDays = document.getElementsByClassName("5-day");
+var fiveDays = document.getElementsByClassName("five-day");
+var weatherInfo = document.getElementById("main");
 
 var cityHistory = JSON.parse(localStorage.getItem("history")) || [];
 
@@ -61,6 +62,7 @@ function printWeather(data) {
       weather.humidity +
       "%</li>";
   }
+  weatherInfo.setAttribute("style", "display: block")
 }
 
 function weatherFinder(lat, lon) {
