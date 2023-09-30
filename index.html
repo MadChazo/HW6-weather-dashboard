@@ -9,19 +9,23 @@
   <body>
     <header><h1>Weather Dashboard</h1></header>
     <div id="bodyweather">
-    <aside id="search">
+    <!-- Search section -->
+      <aside id="search">
       <h2>Search for a City:</h2>
       <input type="text" id="city-search" name="city-search" value="" />
       <input type="submit" id="search-button" value="Search" />
       <button id="clear">Clear History</button>
       <ul id="history"></ul>
     </aside>
+    <!-- Weather section -->
     <main id="main">
+      <!-- Today's weather -->
       <div id="todays-weather">
         <h2 id="today-city"></h2>
         <img id="today-icon" />
         <ul id="today-stats"></ul>
       </div>
+      <!-- 5-day forecast -->
       <h3 id="fiveD-title">5-Day Forecast:</h3>
       <div id="fiveD-forecast">
         <div class="five-day">

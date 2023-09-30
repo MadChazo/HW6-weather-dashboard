@@ -1,3 +1,4 @@
+// HTML element variables
 var searchBtn = document.getElementById("search-button");
 var clearBtn = document.getElementById("clear");
 var citySearch = document.getElementById("city-search");
@@ -7,15 +8,17 @@ var todayIcon = document.getElementById("today-icon");
 var todayStats = document.getElementById("today-stats");
 var fiveDays = document.getElementsByClassName("five-day");
 var weatherInfo = document.getElementById("main");
-
+// Local storage variable for search history
 var cityHistory = JSON.parse(localStorage.getItem("history")) || [];
 
+// Reformats dates from YYYY-DD-MM to DD/MM/YYYY
 function reformatDate(date) {
   var dateArray = date.split("-");
   var newDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
   return newDate;
 }
 
+// Displays selected weather data on webpage
 function printWeather(data) {
   var city = data.city.name;
   var todayDate = reformatDate(data.list[0].dt_txt.split(" ")[0]);
@@ -62,9 +65,10 @@ function printWeather(data) {
       weather.humidity +
       "%</li>";
   }
-  weatherInfo.setAttribute("style", "display: block")
+  weatherInfo.setAttribute("style", "display: block");
 }
 
+// Gets weather data based on coords
 function weatherFinder(lat, lon) {
   var requestURL =
     "http://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -81,6 +85,7 @@ function weatherFinder(lat, lon) {
     });
 }
 
+// Creates history buttons and adds listeners
 function createHistory(city) {
   var historyBtn = document.createElement("li");
   historyBtn.innerHTML = "<button>" + city + "</button>";
@@ -92,6 +97,7 @@ function createHistory(city) {
   });
 }
 
+// Fetches coordinates based on city name input, adds to search history if needed
 function searchHandler() {
   var cityInput = citySearch.value;
   var requestURL =
@@ -107,7 +113,7 @@ function searchHandler() {
     })
     .then(function (data) {
       if (!data.length) {
-        console.log("no city found");
+        alert("No city found with that name.");
         return;
       }
       if (!cityHistory.includes(cityInput)) {
@@ -121,15 +127,18 @@ function searchHandler() {
     });
 }
 
+// Clears search history
 function clearHandler() {
   localStorage.clear();
   historyList.innerHTML = "";
   citySearch.value = "";
 }
 
+// Pulls from local storage if any and calls createHistory to make buttons
 for (let i = 0; i < cityHistory.length; i++) {
   createHistory(cityHistory[i]);
 }
 
+// Event listeners
 searchBtn.addEventListener("click", searchHandler);
 clearBtn.addEventListener("click", clearHandler);
